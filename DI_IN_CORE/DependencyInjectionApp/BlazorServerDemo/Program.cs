@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<WeatherForecastService>();
+builder.Services.AddSingleton<IDemo, Demo>();
 builder.Services.AddSingleton<IDemo, UtcDemo>();
 builder.Services.AddSingleton<ProcessDemo>();
 

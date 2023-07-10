@@ -1,13 +1,21 @@
 ﻿@page "/"
-@inject BlazorServerDemo.Data.IDemo _demo
-@inject BlazorServerDemo.Data.IDemo _demo2
+@using BlazorServerDemo.Data;
+@*@inject BlazorServerDemo.Data.IDemo _demo
+@inject BlazorServerDemo.Data.IDemo _demo2*@
+
+@inject IEnumerable<IDemo> demos
 
 @inject BlazorServerDemo.Data.ProcessDemo _processDemo
 <PageTitle>Index</PageTitle>
 
 <h1>Hello, world!</h1>
-<h2>Demo time: @_demo.StartUpTime.ToString("hh mm ss ffffff")</h2>
-<h2>Demo time: @_demo2.StartUpTime.ToString("hh mm ss ffffff")</h2>
+@foreach(var item in demos)
+{
+    <h2>Demo Time : @item.StartUpTime.ToString("hh mm ss ffffff")</h2>
+}
+
+@*<h2>Demo time: @_demo.StartUpTime.ToString("hh mm ss ffffff")</h2>
+<h2>Demo time: @_demo2.StartUpTime.ToString("hh mm ss ffffff")</h2>*@
 
 <h3>Days in month :  @_processDemo.GetDaysInMonth()</h3>
 Welcome to your new app.
